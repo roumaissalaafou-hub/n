@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Manage account – Nourish</title>
+<title>Manage account – RestoLik</title>
 <link rel="icon" type="image/x-icon" href="icon.ico?v=2"><link rel="shortcut icon" href="icon.ico?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
@@ -99,7 +99,7 @@ input[aria-invalid=true]{border-color:var(--berry)}
 </style>
 </head>
 <body>
-<header><div class="wrap"><a class="logo" href="index.html">Nourish</a><a class="back" href="dashboard.html">Back to dashboard</a></div></header>
+<header><div class="wrap"><a class="logo" href="index.html">RestoLik</a><a class="back" href="dashboard.html">Back to dashboard</a></div></header>
 
 <main class="wrap">
  <h1>Manage account</h1>
@@ -150,7 +150,7 @@ input[aria-invalid=true]{border-color:var(--berry)}
       <label class="f">City<input type="text" id="rCity" autocomplete="address-level2"></label>
       <label class="f">Country<input type="text" id="rCountry" autocomplete="country-name"></label>
       <label class="f">Currency<small>For example MAD</small><input type="text" id="rCur" maxlength="5" autocomplete="off"></label>
-      <label class="f full">Your menu website address<small>QR codes open this address. Use the real address of your menu page, for example https://nourish.ma</small><input type="text" id="rBase" inputmode="url" autocomplete="off" placeholder="https://yourdomain.com"></label>
+      <label class="f full">Your menu website address<small>QR codes open this address. Use the real address of your menu page, for example https://roumaissalaafou-hub.github.io/n</small><input type="text" id="rBase" inputmode="url" autocomplete="off" placeholder="https://roumaissalaafou-hub.github.io/n"></label>
      </div>
      <div class="row" style="margin-top:16px"><button class="btn" type="submit">Save restaurant</button></div>
      <p class="msg" id="rfOk" role="status"></p>
@@ -314,9 +314,9 @@ Nourish.ready.then(function(){
   var r={name:$("rName").value.trim(),cuisine:$("rCuisine").value,street:$("rStreet").value.trim(),city:$("rCity").value.trim(),country:$("rCountry").value.trim(),tables:Math.floor(+$("rTables").value),currency:($("rCur").value.trim()||"MAD").toUpperCase(),baseUrl:$("rBase").value.trim().replace(/\/+$/,"")};
   if(!r.name||!r.street||!r.city||!r.country)return say("rfOk","Please fill in the name and the full address.",1);
   if(!(r.tables>=1&&r.tables<=500))return say("rfOk","Enter a number of tables between 1 and 500.",1);
-  if(r.baseUrl&&!/^https?:\/\/[^\s\/]+/i.test(r.baseUrl))return say("rfOk","The menu address must start with http:// or https://, for example https://nourish.ma",1);
+  if(r.baseUrl&&!/^https?:\/\/[^\s\/]+/i.test(r.baseUrl))return say("rfOk","The menu address must start with http:// or https://, for example https://roumaissalaafou-hub.github.io/n",1);
   A.restaurant=r;persist();
-  try{var dash=JSON.parse(localStorage.getItem(N.dashKey()));if(dash&&dash.restaurant){dash.restaurant.name=r.name;dash.restaurant.currency=r.currency;dash.restaurant.baseUrl=r.baseUrl||"https://yourdomain.com";localStorage.setItem(N.dashKey(),JSON.stringify(dash));N.saveDash(dash,true)}}catch(x){}
+  try{var dash=JSON.parse(localStorage.getItem(N.dashKey()));if(dash&&dash.restaurant){dash.restaurant.name=r.name;dash.restaurant.currency=r.currency;dash.restaurant.baseUrl=r.baseUrl||"https://roumaissalaafou-hub.github.io/n";localStorage.setItem(N.dashKey(),JSON.stringify(dash));N.saveDash(dash,true)}}catch(x){}
   say("rfOk","Restaurant details saved.");
  });
 
@@ -435,7 +435,7 @@ Nourish.ready.then(function(){
   var dash=null;try{dash=JSON.parse(localStorage.getItem(N.dashKey()))}catch(x){}
   var a=document.createElement("a");
   a.href=URL.createObjectURL(new Blob([JSON.stringify({account:copy,dashboard:dash},null,2)],{type:"application/json"}));
-  a.download="nourish-my-data.json";a.click();URL.revokeObjectURL(a.href);
+  a.download="restolik-my-data.json";a.click();URL.revokeObjectURL(a.href);
  });
  $("delConfirm").addEventListener("input",function(){$("delBtn").disabled=this.value.trim()!=="DELETE"});
  $("delBtn").addEventListener("click",function(){

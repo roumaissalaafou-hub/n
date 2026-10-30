@@ -1,4 +1,4 @@
-/* Nourish – Supabase connection (loaded after the Supabase library, before auth.js).
+/* RestoLik – Supabase connection (loaded after the Supabase library, before auth.js).
    Paste your anon (publishable) key below. Never put the service_role key in front-end code. */
 (function () {
   "use strict";

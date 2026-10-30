@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Menu – Nourish</title>
+<title>Menu – RestoLik</title>
 <link rel="icon" type="image/x-icon" href="icon.ico?v=2"><link rel="shortcut icon" href="icon.ico?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
@@ -409,14 +409,14 @@ function showPicker(){
  var list=N.restaurants(),box=$("pick");
  [document.querySelector("header.top"),$("secsNav"),document.querySelector("main"),$("bar"),$("welcome")].forEach(function(el){if(el)el.hidden=true});
  document.body.style.paddingBottom="0";
- document.title="Choose a restaurant – Nourish";
+ document.title="Choose a restaurant – RestoLik";
  var items=list.map(function(r){
   var d=N.dashData(r.id),n=(d&&Array.isArray(d.dishes))?d.dishes.length:0;
   var bits=[r.cuisine,r.city].filter(Boolean);bits.push(n?n+(n===1?" dish":" dishes"):"Menu coming soon");
   return '<li data-s="'+esc((r.name+" "+bits.join(" ")).toLowerCase())+'"><a class="rcard" href="menu.html?r='+encodeURIComponent(r.slug)+'">'+
    '<span class="rname">'+esc(r.name)+'</span><span class="rgo">See menu</span><span class="rmeta">'+bits.map(esc).join(" · ")+'</span></a></li>';
  }).join("");
- box.innerHTML='<div class="wrap"><p class="wr">Nourish</p><h1>Where are you eating?</h1>'+
+ box.innerHTML='<div class="wrap"><p class="wr">RestoLik</p><h1>Where are you eating?</h1>'+
   '<p class="wl">Choose the restaurant to open its menu. If you scanned the QR code on your table, you can skip this step.</p>'+
   (list.length>5?'<label class="t" for="pq" style="display:block;font-weight:700;margin-bottom:6px">Search</label><input id="pq" type="search" placeholder="Type a name, city or food" autocomplete="off">':'')+
   '<ul class="rlist">'+items+'</ul><p class="none" id="pnone" role="status" hidden>No restaurant matches your search.</p>'+

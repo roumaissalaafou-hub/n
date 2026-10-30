@@ -1,4 +1,4 @@
--- Nourish phase 2: public menus, diner orders, table occupancy.
+-- RestoLik phase 2: public menus, diner orders, table occupancy.
 -- Run this once in Supabase > SQL Editor (after the phase 1 SQL).
 
 -- 1) Public menu: anyone can read, only the owner can write.

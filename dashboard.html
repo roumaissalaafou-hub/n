@@ -6,7 +6,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js?v=3"></script>
 <script src="auth.js?v=4" data-protect data-menu></script>
-<title>Dashboard – Nourish</title>
+<title>Dashboard – RestoLik</title>
 <link rel="icon" type="image/x-icon" href="icon.ico?v=2"><link rel="shortcut icon" href="icon.ico?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
@@ -361,7 +361,7 @@ details.fold>summary:hover{background:var(--leaf-t);color:var(--ink)}
 <a class="skip" href="#main">Skip to main content</a>
 <header><div class="wrap">
  <button type="button" class="hbtn" id="navToggle" aria-label="Hide the side menu" aria-pressed="false" title="Hide or show the side menu"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="5" width="16" height="14" rx="2.5"/><path d="M9.5 5v14"/></svg></button>
- <a class="logo" href="index.html" aria-label="Nourish home">Nourish</a>
+ <a class="logo" href="index.html" aria-label="RestoLik home">RestoLik</a>
  <div class="crumbs" aria-label="You are here"><span id="rname"></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 6l6 6-6 6"/></svg><b id="crSec">Orders</b></div>
  <span class="plan" id="plan"></span>
  <div class="hsearch" role="search"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg><label class="vh" for="gs">Search the dashboard</label><input type="text" id="gs" role="combobox" aria-expanded="false" aria-controls="gsList" aria-autocomplete="list" autocomplete="off" placeholder="Search dishes, stock, orders"><kbd id="gsKey" aria-hidden="true">Ctrl K</kbd><div class="gslist" id="gsList" role="listbox" aria-label="Search results" hidden></div></div>
@@ -806,7 +806,7 @@ Nourish.ready.then(function(){
  function load(){
   var s=null;try{s=JSON.parse(localStorage.getItem(KEY))}catch(e){}
   if(s){s.ledger=s.ledger||[];s.ingredients=s.ingredients||[];s.moves=s.moves||[];return s}
-  s={restaurant:{name:"My restaurant",baseUrl:"https://yourdomain.com",currency:"MAD"},tables:[],
+  s={restaurant:{name:"My restaurant",baseUrl:"https://roumaissalaafou-hub.github.io/n",currency:"MAD"},tables:[],
    categories:[{id:uid(),name:"Starters",type:"food"},{id:uid(),name:"Mains",type:"food"},{id:uid(),name:"Drinks",type:"beverage"}],
    dishes:[],ledger:[],ingredients:[],moves:[],settings:{}};
   try{var A0=Nourish.account(),r=A0?{rname:A0.restaurant.name,tables:A0.restaurant.tables}:null;
@@ -838,13 +838,13 @@ Nourish.ready.then(function(){
  var fmt=function(n){return Math.round(n).toLocaleString("en-US")+" "+cur()};
  var fmtx=function(n){return Number(n).toLocaleString("en-US",{minimumFractionDigits:0,maximumFractionDigits:2})+" "+cur()};
  var slug=function(){return Nourish.mySlug()||Nourish.slug(S.restaurant.name)};
- var MENU_BASE="https://rorodadu.github.io/Nourish";
+ var MENU_BASE="https://roumaissalaafou-hub.github.io/n";
  var menuUrl=function(){return MENU_BASE+"/menu.html?r="+slug()};
  var optHtml=function(arr,sel){return arr.map(function(o){return '<option'+(o===sel?' selected':'')+'>'+o+'</option>'}).join("")};
 
  /* header */
  function head(){
-  $("rname").textContent=S.restaurant.name;document.title=S.restaurant.name+" – Dashboard – Nourish";
+  $("rname").textContent=S.restaurant.name;document.title=S.restaurant.name+" – Dashboard – RestoLik";
   var A1=Nourish.account();$("plan").textContent=A1&&A1.plan?A1.plan.name+" plan":"";
   $("plan").hidden=!$("plan").textContent;
  }
@@ -1203,7 +1203,7 @@ Nourish.ready.then(function(){
    return [e.date,e.type,cell(e.cat),e.amount,e.orders||0,cell(e.note)].join(",");
   }));
   var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([rows.join("\n")],{type:"text/csv"}));
-  a.download="nourish-"+slug()+"-records.csv";a.click();URL.revokeObjectURL(a.href);
+  a.download="restolik-"+slug()+"-records.csv";a.click();URL.revokeObjectURL(a.href);
  }
 
  /* events */
@@ -1771,7 +1771,7 @@ Nourish.ready.then(function(){
   $("exList").innerHTML=EXK().map(function(x){return '<div class="led" style="grid-template-columns:1fr auto"><div><b>'+x[1]+'</b><small>'+x[2]+(x[3]!==""?' · '+x[3]+' row'+(x[3]===1?"":"s"):'')+'</small></div><button class="btn ghost sm" data-act="ex" data-k="'+x[0]+'">Download</button></div>'}).join("");
  }
  function doExport(k){
-  var pre="nourish-"+slug()+"-"+k+"-"+ds(new Date()),catName=function(id){var c=S.categories.filter(function(x){return x.id===id})[0];return c?c.name:""};
+  var pre="restolik-"+slug()+"-"+k+"-"+ds(new Date()),catName=function(id){var c=S.categories.filter(function(x){return x.id===id})[0];return c?c.name:""};
   if(k==="orders"){
    dlFile(pre+".csv","text/csv",csvOf(["Order","Date","Time","Table","Guests","Status","Dishes","Dishes total","Tip","Paid by card","Cash","Cash confirmed","Rating"],
     myOrders().sort(function(a,b){return (a.at||0)-(b.at||0)}).map(function(o){var p=payParts(o),d=new Date(o.at||0);
